@@ -1,0 +1,55 @@
+
+version: "3.8"
+
+services:
+
+  #Builds Backend
+  moringa-devops-o4-ip2-backend:
+    image: wanzetsemaloba/moringa-devops-04-ip2-server:v0.1.1
+    build: ./backend
+    container_name: moringa-devops-04-ip2-server2
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on: 
+      - moringa-devops-o4-ip2-mongo
+    networks:
+      - moringa-devops-04-ip2-net
+
+#Builds Frontend
+  moringa-devops-o4-ip2-client:
+    image: wanzetsemaloba/moringa-devops-04-ip2-ui:v0.1.1
+    build: ./client
+    container_name: moringa-devops-04-ip2-ui2
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    networks:
+      - moringa-devops-04-ip2-net
+
+  # Mongo Db
+  moringa-devops-o4-ip2-mongo:
+    image: mongo
+    container_name: moringa-devops-04-ip2-mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - moringa-devops-04-ip2-net
+    volumes:
+      - type: volume
+        source: moringa-devops-04-ip2-vol
+        target: /moringa-devops-04-ip2-data/db
+
+#Network Configuration
+networks:
+  moringa-devops-04-ip2-net:
+    name: moringa-devops-04-ip2-net
+    driver: bridge
+    attachable: true
+
+# Docker Volume for Data Persistence
+volumes:
+  moringa-devops-04-ip2-vol:
+    driver: local
+    

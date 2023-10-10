@@ -1,19 +1,23 @@
-#Use Node Alpine as Base Image
-FROM node:alpine3.18
+FROM node:14-slim AS build
 
-# Specify Working directory
-   #Create The directory
-RUN mkdir -p /moringa/devops04/ip2/server
-   #point to the Working directory
-WORKDIR /moringa/devops04/ip2/server
+WORKDIR /moringa/devops-04/ip2/server
 
-# Copy Everything to the working directory
-COPY  . /moringa/devops04/ip2/server/
-# Installing the dependencies
-RUN npm install 
+COPY ./package.json ./
+COPY ./package-lock.json ./
+
+RUN npm install
+
+COPY . .
 
 
+FROM alpine:3.16.7
 
+WORKDIR /server
 
-#  Run the application on docker run 
-CMD ["npm", "start"]
+RUN apk update && apk add --update nodejs
+
+COPY --from=build /moringa/devops-04/ip2/server /server
+
+EXPOSE 5000
+
+CMD [ "node", "server.js" ]
