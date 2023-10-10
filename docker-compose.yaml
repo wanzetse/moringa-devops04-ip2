@@ -5,7 +5,7 @@ services:
 
   #Builds Backend
   moringa-devops-o4-ip2-backend:
-    image: wanzetsemaloba/moringa-devops-04-ip2-server:v0.1.1
+    image: wanzetsemaloba/moringa-devops-04-ip2-server:v1.1.1
     build: ./backend
     container_name: moringa-devops-04-ip2-server2
     restart: always
