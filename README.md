@@ -23,4 +23,4 @@ Make sure that you have the following installed:
  ### Go ahead a nd add a product (note that the price field only takes a numeric input)
 
  ## For More Explanations got to 
- > [Explanations File](https://github.com/wanzetse/moringa-devops04-ip2/exlanation.md)
+ > [Explanations File](https://github.com/wanzetse/moringa-devops04-ip2/explanation.md)
