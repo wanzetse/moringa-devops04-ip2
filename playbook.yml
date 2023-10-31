@@ -1,1 +1,11 @@
 ---
+- name: Deploy Yolo App For IP3
+  hosts: all
+  become: true 
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  roles:
+
+    - an_role_server_setup_ip3
+    - an_role_project_setup_ip3
+    - an_role_project_deploy_ip3
