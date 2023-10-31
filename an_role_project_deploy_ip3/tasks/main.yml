@@ -1,2 +1,10 @@
----
-# tasks file for an_role_project_deploy_ip3
+- name: Start Project Setup
+  command: cd /home/wanzetse/ip3
+  args:
+        chdir: /home/wanzetse/ip3
+        creates: /home/wanzetse/ip3
+
+- name: Run Docker Compose
+  command: docker-compose up -d
+  args:
+    chdir: /home/wanzetse/ip3  # Change the working directory to the cloned folder
