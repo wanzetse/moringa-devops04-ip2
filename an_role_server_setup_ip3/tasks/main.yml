@@ -43,7 +43,7 @@
         state: latest
         update_cache: true
 
-    - name: Install Docker Module for Python
+    - name: Install Docker Module for Python--- Test that docker is properly setup
       pip:
         name: docker
 
