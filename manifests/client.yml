@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment_client
+spec:
+  selector:
+    matchLabels:
+      app: client_app
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: client_container
+        image: wanzetsemaloba/moringa-devops-04-ip2-ui:v0.1.1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000

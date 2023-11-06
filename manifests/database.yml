@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mystatefulset
+  name: ip4_wan2_stlfset
 spec:
   selector:
     matchLabels:
       app: myapp
-  serviceName: <ServiceName>
-  replicas: 2
+  serviceName: mongo_service
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,16 +15,16 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: registry.k8s.io/nginx-slim:0.8
+        image: mongo
         ports:
-        - containerPort: 80
-          name: web
+        - containerPort: 27017
+          name: db
         volumeMounts:
-        - name: www
-          mountPath: /usr/share/nginx/html
+        - name: dbvol
+          mountPath: /data/db
   volumeClaimTemplates:
   - metadata:
-      name: www
+      name: dbvol
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
