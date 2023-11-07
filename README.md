@@ -24,3 +24,6 @@ Make sure that you have the following installed:
 
  ## For More Explanations got to 
  > [Explanations File](https://github.com/wanzetse/moringa-devops04-ip2/blob/master/explanation.md)
+
+
+# IP4 Exposed googlle cloud console url   (http://34.162.9.196/)

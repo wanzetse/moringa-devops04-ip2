@@ -25,3 +25,19 @@ kubectl describe {pod-name}   --- for all pod names
 
 ## to get Exposed Deployements foe=r world reading.
   kubectl get service
+
+
+
+## Google cloud Deployment (GKE Cluster)
+
+- Start Shell
+- Git Clone The project. (git clone https://github.com/wanzetse/moringa-devops04-ip2.git ip4)
+- cd ip2/manifests
+- kubectl version   -- check that kubectl is enabled. 
+# Run All previous commands as run locally
+# Expose The deployment 
+- kubectl expose deployment appserver --name=app-service-server --type=LoadBalancer --port 80 --target-port 5000
+
+### Exposed Url  (http://34.162.9.196/)
+
+
